@@ -30,3 +30,9 @@ def pyramid_surface(length, width, height):
 
 def pyramid_volume(height, length, width):
     return (length * width * height) / 3
+
+def calculate_radius(diameter):
+    return diameter / 2
+
+def circumference(radius):
+    return 2 * constants.pi * radius
