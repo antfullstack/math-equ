@@ -95,3 +95,6 @@ def cosin(angle):
 
 def tan(angle):
     return sin(angle) / cosin(angle)
+
+def sphere_surface(radius):
+    return 4 * constants.pi * radius**2
