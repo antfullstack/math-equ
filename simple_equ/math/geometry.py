@@ -1,5 +1,5 @@
 import constants
-import algebra
+import simple_equ.math.algebra as algebra
 
 def pythagoras(a, b):
     result = a*a + b*b
