@@ -1,4 +1,4 @@
-# math-equ
+# simple-equ
 
 An open source library containing multiple known STEM equations in a functional form. 
 
