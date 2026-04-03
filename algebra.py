@@ -32,4 +32,12 @@ def sqrt(number):
         return 0; 
     else: 
         raise ValueError("Not a real number")
-  
+
+def basic_quadratic(a, b, c):
+    
+    d = (b**2) - (4*a*c)
+    sqrt_d = d**0.5
+
+    root1 = (-b + sqrt_d) / (2*a)
+    root2 = (-b - sqrt_d) / (2*a)
+    return root1, root2
