@@ -27,3 +27,22 @@ def percentage(fraction, whole):
         return result
     except ValueError:
         print("Invalid argument types.")
+
+# OLS Linear Regression - returns slope and intercept of the best fit line for the given x and y data points
+def linear_regression(x, y):
+    try:
+        x = list(map(float, x))
+        y = list(map(float, y))
+    except ValueError:
+        print("Invalid argument types.")
+        return 
+    n = len(x)
+    sum_x = sum(x)
+    sum_y = sum(y)
+    sum_x_squared = sum(xi ** 2 for xi in x)
+    sum_xy = sum(xi * yi for xi, yi in zip(x, y))
+
+    slope = (n * sum_xy - sum_x * sum_y) / (n * sum_x_squared - sum_x ** 2)
+    intercept = (sum_y - slope * sum_x) / n
+
+    return slope, intercept
