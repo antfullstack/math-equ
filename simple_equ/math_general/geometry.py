@@ -66,13 +66,29 @@ def distance(a: tuple | list | list, b: tuple | list | list) -> float:
 def sin(angle: int | float):
     # Convert degrees to radians and make angle sensible size
     angle = angle % 360
-    radians = angle * constants.pi / 180
-    result = 0
-    for i in range(10): # 10 terms for good precision
-        sign = (-1) ** i
-        exponent = 2 * i + 1
-        result += sign * (radians ** exponent) / algebra.factorial(exponent)
-    return result
+    if angle >= 180:
+        angle -= 360
+
+    sign = 1 
+    if angle > 90: 
+        angle = 180 - angle 
+    elif angle < -90: 
+        angle = -180 - angle
+        sign = -1
+
+    x = angle * constants.pi / 180
+
+    term = x 
+    tol =  1e-15
+    result = 0.0
+    i = 0
+
+    while abs(term) > tol:
+        result += term 
+        i += 1 
+        term *= -x * x / ((2 * i) * (2 * i + 1))
+
+    return sign * result
 
 def cosin(angle: int | float):
     angle = angle % 360
