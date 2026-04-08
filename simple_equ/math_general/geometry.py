@@ -1,6 +1,6 @@
 from pathlib import Path
-from simple_equ.math_general import algebra
-from simple_equ.math_general import constants
+import geometry
+import algebra
 import sys
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
