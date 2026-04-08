@@ -24,6 +24,7 @@ Please use clear and descriptive commit messages following this format:
 
 ## Code style
 - Follow existing code conventions in the project
+- Add docstrings to each function's start that match the project's style. 
 - Use 4 spaces for indentation
 - Keep lines under 120 characters
 - Add comments for complex logic
