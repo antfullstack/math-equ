@@ -37,7 +37,8 @@ import simple_equ.math_general.algebra as sa
 result = sa.basic_quadratic(a,b,c)
 ```
 ```
-Looking to calculate the sin of an angle? Well... here is the algorithm to do this, is pseudo-code
+Looking to calculate the sin of an angle?
+Well... here is the algorithm to do this, is pseudo-code
 
 function sin_taylor(x, n_terms):
     result = 0
@@ -69,7 +70,8 @@ sin30 = sg.sin(30) # In case you didn't notice, this is the same thing in simple
 
 ```
 """
-Normally, we would put a linear regression here. But it is pretty monsterous. Worry not though. This is how to do it with simple-equ:
+Normally, we would put a linear regression here. But it is pretty monsterous.
+Worry not though. This is how to do it with simple-equ:
 """
 
 import simple_equ.economics.statistics as se
