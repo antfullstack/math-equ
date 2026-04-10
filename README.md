@@ -11,8 +11,8 @@ Optional: Use a venv (virtual environment).
 
 ## Usage
 
-simple-equ is simple, yet practical. That is the problem is solves. Sure, someone with some knowledge in their field can implement this library's
-functionality. But, let us look on how that would realistically look like: 
+simple-equ is simple, yet practical. That is the problem it solves. Sure, someone with some knowledge in their field can implement this library's
+functionality. But, let's look at how that would realistically look like: 
 
 ```
 a = 3
@@ -25,8 +25,8 @@ Here is an example of implementing a basic quadratic equation
 import math
 
 delta = b**2 - 4 * a * c
-solution1 = (-b + math.sqrt(delta)) / 2*a
-solution2 = (-b - math.sqrt(delta)) / 2*a
+solution1 = (-b + math.sqrt(delta)) / (2 * a)
+solution2 = (-b - math.sqrt(delta)) / (2 * a)
 
 """
 Here, just an import and a function call is needed!
@@ -38,7 +38,7 @@ result = sa.basic_quadratic(a,b,c)
 ```
 ```
 Looking to calculate the sin of an angle?
-Well... here is the algorithm to do this, is pseudo-code
+Well... here is the algorithm to do this, in pseudo-code
 
 function sin_taylor(x, n_terms):
     result = 0
@@ -70,20 +70,20 @@ sin30 = sg.sin(30) # In case you didn't notice, this is the same thing in simple
 
 ```
 """
-Normally, we would put a linear regression here. But it is pretty monsterous.
+Normally, we would put a linear regression here. But it is pretty monstrous.
 Worry not though. This is how to do it with simple-equ:
 """
 
 import simple_equ.economics.statistics as se
 
-se.linear_regression([3,4,6],[4,6,7])
+se.linear_regression([3, 4, 6],[4, 6, 7])
 ```
 
 You just import the field of your liking, and then boom!
 
 ## Structure
 
-The library is structured into fields. These fields have their own folder aka modules. However, a field can have multiple subsets. These subsets are usually 
+The library is structured into fields. These fields have their own folder, aka modules. However, a field can have multiple subsets. These subsets are usually 
 present in the form of `python` files. For example: `algebra.py` and `geometry.py`, are examples of subfields of the general math field called **math_general**.
 
 To import something in a practical sense in simple_equ, the structure looks like this: 
@@ -100,7 +100,7 @@ Practical examples include:
 
 The project encourages a community-driven approach. Everyone can contribute.
 Be sure to be kind and respectful. Do not assume that something is known to the contributor
-you are talking to just because you know it and do not be rude or even made comments about their
+you are talking to just because you know it and do not be rude or even make comments about their
 skill. This behaviour is not welcome here. 
 
 See `contributing.md` for ways to get started.
