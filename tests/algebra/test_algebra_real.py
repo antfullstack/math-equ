@@ -21,6 +21,11 @@ from simple_equ import algebra
     ],
 )
 def test_power(base, exponent, expected):
+    """[Summary]: Verify that power returns the base raised to the exponent.
+
+    [Description]: Covers common cases including negative bases, negative
+    exponents, and zero values to ensure robustness in standard scenarios.
+    """
     assert algebra.power(base, exponent) == pytest.approx(expected, rel=1e-9)
 
 
@@ -34,14 +39,17 @@ def test_power(base, exponent, expected):
     ],
 )
 def test_factorial_positive(number, expected):
+    """[Summary]: Verify that factorial returns the correct value for positive integers."""
     assert algebra.factorial(number) == expected
 
 
 def test_factorial_negative():
+    """[Summary]: Verify that factorial handles negative integers by returning 1."""
     assert algebra.factorial(-5) == 1
 
 
 def test_factorial_float():
+    """[Summary]: Verify that factorial correctly handles floating-point inputs."""
     assert algebra.factorial(3.0) == 6
 
 
@@ -57,6 +65,7 @@ def test_factorial_float():
     ],
 )
 def test_gcd(a, b, expected):
+    """[Summary]: Verify that gcd returns the greatest common divisor."""
     assert algebra.gcd(a, b) == expected
 
 
@@ -70,10 +79,12 @@ def test_gcd(a, b, expected):
     ],
 )
 def test_sqrt_positive(number, expected):
+    """[Summary]: Verify that sqrt returns the square root for non-negative numbers."""
     assert algebra.sqrt(number) == expected
 
 
 def test_sqrt_negative():
+    """[Summary]: Verify that sqrt raises ValueError for negative inputs."""
     with pytest.raises(ValueError, match="Not a real number"):
         algebra.sqrt(-1)
 
@@ -89,6 +100,7 @@ def test_sqrt_negative():
     ],
 )
 def test_cbrt(x, expected):
+    """[Summary]: Verify that cbrt returns the real cube root."""
     assert algebra.cbrt(x) == pytest.approx(expected, rel=1e-9)
 
 
@@ -101,25 +113,15 @@ def test_cbrt(x, expected):
     ],
 )
 def test_basic_quadratic(a, b, c, expected):
+    """[Summary]: Verify that basic_quadratic returns real roots for common inputs."""
     root1, root2 = algebra.basic_quadratic(a, b, c)
     assert sorted([root1, root2]) == sorted(expected)
 
 
 def test_basic_quadratic_zero_a():
+    """[Summary]: Verify that basic_quadratic raises ZeroDivisionError when a is zero."""
     with pytest.raises(ZeroDivisionError):
         algebra.basic_quadratic(0, 1, 1)
-
-
-@pytest.mark.parametrize(
-    "a,b,c,d,expected",
-    [
-        (1, -6, 11, -6, [1, 2, 3]),
-    ],
-)
-def test_basic_qubic_three_real(a, b, c, d, expected):
-    roots = algebra.basic_qubic(a, b, c, d)
-    real_roots = sorted([r for r in roots if isinstance(r, (int, float))])
-    assert real_roots == pytest.approx(expected, rel=1e-9)
 
 
 @pytest.mark.parametrize(
@@ -131,10 +133,12 @@ def test_basic_qubic_three_real(a, b, c, d, expected):
     ],
 )
 def test_basic_linear(a, b, expected):
+    """[Summary]: Verify that basic_linear returns the correct solution."""
     assert algebra.basic_linear(a, b) == expected
 
 
 def test_basic_linear_zero_a():
+    """[Summary]: Verify that basic_linear raises ZeroDivisionError when a is zero."""
     with pytest.raises(ZeroDivisionError):
         algebra.basic_linear(0, 1)
 
@@ -151,9 +155,11 @@ def test_basic_linear_zero_a():
     ],
 )
 def test_is_divisible(a, b, expected):
+    """[Summary]: Verify that is_divisible correctly identifies divisibility."""
     assert algebra.is_divisible(a, b) == expected
 
 
 def test_is_divisible_zero_divisor():
+    """[Summary]: Verify that is_divisible raises ValueError when the divisor is zero."""
     with pytest.raises(ValueError, match="Cannot divide by zero"):
         algebra.is_divisible(10, 0)

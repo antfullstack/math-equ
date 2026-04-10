@@ -159,8 +159,15 @@ def basic_qubic(a: int | float, b: int | float, c: int | float, d: int | float):
         roots.extend([x1, x2, x3])
 
     # It just removes the artifacts from floating point innacuracies here
-    roots = [round(x, 10) for x in roots]
-    return roots
+    rounded_roots = []
+    for x in roots:
+        real_part = round(x.real, 10) if isinstance(x, complex) else round(x, 10)
+        imag_part = round(x.imag, 10) if isinstance(x, complex) else 0
+        if imag_part == 0:
+            rounded_roots.append(float(real_part))
+        else:
+            rounded_roots.append(complex(real_part, imag_part))
+    return rounded_roots
 
 
 def basic_linear(a: int | float, b: int | float):
