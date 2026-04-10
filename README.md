@@ -14,7 +14,7 @@ Optional: Use a venv (virtual environment).
 simple-equ is simple, yet practical. That is the problem is solves. Sure, someone with some knowledge in their field can implement this library's
 functionality. But, let us look on how that would realistically look like: 
 
-`
+```
 a = 3
 b = 4
 c = 4
@@ -35,9 +35,47 @@ Here, just an import and a function call is needed!
 import simple_equ.math_general.algebra as sa
 
 result = sa.basic_quadratic(a,b,c)
-`
+```
+```
+Looking to calculate the sin of an angle? Well... here is the algorithm to do this, is pseudo-code
 
-<img width="1065" height="580" alt="sin" src="https://github.com/user-attachments/assets/a34229b6-628b-452f-8efa-ed1181638ffd" />
+function sin_taylor(x, n_terms):
+    result = 0
+    sign = 1             # alternates between + and -
+
+    for i from 0 to n_terms-1:
+        term_exponent = 2*i + 1
+        term_factorial = factorial(term_exponent)
+        term = sign * (x ^ term_exponent) / term_factorial
+        result = result + term
+        sign = -sign     # flip the sign for next term
+
+    return result
+
+function factorial(k):
+    if k == 0 or k == 1:
+        return 1
+    else:
+        f = 1
+        for j from 2 to k:
+            f = f * j
+        return f
+
+"""
+
+import simple_equ.math_general.geometry as sg
+sin30 = sg.sin(30) # In case you didn't notice, this is the same thing in simple_equ
+```
+
+```
+"""
+Normally, we would put a linear regression here. But it is pretty monsterous. Worry not though. This is how to do it with simple-equ:
+"""
+
+import simple_equ.economics.statistics as se
+
+se.linear_regression([3,4,6],[4,6,7])
+```
 
 <img width="1233" height="185" alt="linearreg" src="https://github.com/user-attachments/assets/a09cc933-0e2b-493d-bbef-894115112f31" />
 
