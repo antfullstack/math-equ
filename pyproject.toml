@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "simple_equ"
-version = "1.2.11"
+version = "1.2.1"
 description = "An open source library containing multiple known STEM equations in a functional form."
 readme = "README.md"
 authors = [
@@ -15,15 +15,19 @@ requires-python = ">=3.8"
 dependencies = []
 
 [tool.setuptools.packages.find]
-# Packages live inside simple_equ/
 where = ["simple_equ"]
 
 [tool.cibuildwheel]
 build = "cp3*-*"
 
-# Paths are relative to the repo root (SIMPLE-EQU/).
 # Regenerate the .c file inside each isolated build container before compiling.
 before-build = "pip install cython && python -m cython --3str simple_equ/geometry/trigonometry.py -o simple_equ/geometry/trigonometry.c"
+
+# Explicitly use manylinux_2_28 image so Linux wheels get the correct
+# manylinux platform tag instead of the bare linux_x86_64 tag that PyPI rejects.
+[tool.cibuildwheel.linux]
+manylinux-x86_64-image = "manylinux_2_28"
+manylinux-aarch64-image = "manylinux_2_28"
 
 [tool.cibuildwheel.environment]
 CYTHON_FORCE_REGEN = "1"
