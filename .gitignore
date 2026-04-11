@@ -205,3 +205,12 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Cython
+simple_equ/**/build/
+simple_equ/**/*.html
+**/*.pyd
+**/*.o
+
+# egg-info at repo root
+simple_equ.egg-info/
