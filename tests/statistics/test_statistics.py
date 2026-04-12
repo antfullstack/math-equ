@@ -4,7 +4,7 @@ import sys
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
-from simple_equ.economics.statistics import average, median, percentage, linear_regression, dot, standardization
+from simple_equ.economics.statistics import average, median, percentage, linear_regression, dot, bayes_theorem
 
 
 # ==============================================================================
