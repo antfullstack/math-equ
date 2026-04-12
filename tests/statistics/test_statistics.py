@@ -4,7 +4,7 @@ import sys
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
-from simple_equ.economics.statistics import average, median, percentage, linear_regression, dot
+from simple_equ.economics.statistics import average, median, percentage, linear_regression, dot, bayes_theorem
 
 
 # ==============================================================================
@@ -512,3 +512,32 @@ def test_dot_parallel_unit_vectors():
         pytest tests/test_math_utils.py -k test_dot_parallel_unit_vectors
     """
     assert dot([1, 0], [1, 0]) == pytest.approx(1)
+
+
+# ==============================================================================
+# bayes_theorem()
+# ==============================================================================
+
+@pytest.mark.parametrize(
+    "p_b_given_a,p_a,p_b,expected",
+    [
+        (0.9, 0.01, 0.05, 0.18),
+        (0.8, 0.5, 0.4, 1.0),
+        (0.1, 0.1, 0.01, 1.0),
+        (0.5, 0.2, 0.5, 0.2),
+    ],
+)
+def test_bayes_theorem_numeric(p_b_given_a, p_a, p_b, expected):
+    """[Summary]: Verify that bayes_theorem returns the correct posterior probability.
+
+    [Description]: Runs parametrized inputs covering various probability
+    scenarios, comparing results against known expected values.
+    """
+    assert bayes_theorem(p_b_given_a, p_a, p_b) == pytest.approx(expected)
+
+
+def test_bayes_theorem_zero_p_b():
+    """[Summary]: Verify that bayes_theorem raises when p_b is zero.
+    """
+    with pytest.raises(ValueError, match="p_b must be greater than zero"):
+        bayes_theorem(0.9, 0.01, 0)

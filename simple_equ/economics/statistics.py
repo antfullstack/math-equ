@@ -129,3 +129,20 @@ def dot(x, w):
         print(result)
     """
     return sum(x_i * w_i for x_i, w_i in zip(x, w))
+
+
+def bayes_theorem(p_b_given_a: float, p_a: float, p_b: float) -> float:
+    """[Summary]: Calculate the posterior probability using Bayes' Theorem.
+
+    [Description]: Computes P(A|B) = (P(B|A) * P(A)) / P(B).
+    Returns the posterior probability of event A given that B has occurred.
+
+    [Usage]: Typical usage example:
+
+        # P(B|A) = 0.9, P(A) = 0.01, P(B) = 0.05
+        result = bayes_theorem(0.9, 0.01, 0.05)
+        print(result) # 0.18
+    """
+    if p_b == 0:
+        raise ValueError("p_b must be greater than zero")
+    return (p_b_given_a * p_a) / p_b
