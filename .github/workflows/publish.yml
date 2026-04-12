@@ -3,6 +3,12 @@ on:
   push:
     tags:
       - "v*"
+  # ✅ Allows release.yml to trigger this workflow directly
+  workflow_call:
+    inputs:
+      tag:
+        required: true
+        type: string
 permissions:
   contents: read
 jobs:
@@ -14,6 +20,9 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
       - uses: actions/checkout@v4
+        with:
+          # ✅ Use the tag passed in, or fallback to the pushed tag
+          ref: ${{ inputs.tag || github.ref }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
