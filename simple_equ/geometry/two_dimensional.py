@@ -87,6 +87,20 @@ def triangle_area(base: int | float, height: int | float):
     return (base * height) / 2
 
 
+def regular_polygon_area(apothem: int | float, perimeter: int | float):
+    """[Summary]: Return the area of a regular polygon.
+
+    [Description]: Multiplies the apothem by the perimeter and divides the
+    result by two to compute the area of a regular polygon.
+
+    [Usage]: Typical usage example:
+
+        result = regular_polygon_area(4, 20)
+        print(result)
+    """
+    return (apothem * perimeter) / 2
+
+
 def calculate_radius(diameter: int | float):
     """[Summary]: Return the radius derived from a diameter.
 

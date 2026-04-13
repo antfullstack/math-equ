@@ -168,6 +168,28 @@ def test_triangle_area(base, h, expected):
 
 
 @pytest.mark.parametrize(
+    "apothem,perimeter,expected",
+    [
+        (4, 20, 40.0),
+        (3.5, 12, 21.0),
+        (7, 8.5, 29.75),
+        (0, 10, 0.0),
+    ],
+)
+def test_regular_polygon_area(apothem, perimeter, expected):
+    """[Summary]: Verify that regular_polygon_area returns the expected area.
+
+    [Description]: Exercises the regular polygon area helper with integer,
+    floating-point, and zero-value inputs.
+
+    [Usage]: Typical usage example:
+
+        pytest tests/geometry/test_geometry.py -k test_regular_polygon_area
+    """
+    assert geo.regular_polygon_area(apothem, perimeter) == pytest.approx(expected, rel=1e-9)
+
+
+@pytest.mark.parametrize(
     "l,w,h,expected",
     [
         (1, 1, 1, pytest.approx(3.236, rel=1e-3)),
